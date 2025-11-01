@@ -299,23 +299,3 @@ cat runtime/mail/<filename>
 4. Настроить SMTP в `config/web.php`
 5. Использовать HTTPS
 6. Настроить backup БД
-
-## Лицензия
-
-BSD-3-Clause
-
-## Автор
-
-Создано как тестовое задание для демонстрации навыков Senior PHP Developer.
-
-### Демонстрируемые навыки
-
-- Clean Architecture & SOLID
-- Repository Pattern
-- Service Layer
-- Security Best Practices (OWASP Top 10)
-- Database Normalization
-- Docker & DevOps
-- Yii2 Framework (advanced)
-- Git (conventional commits)
-- Documentation
