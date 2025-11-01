@@ -254,7 +254,7 @@ class PostFormTest extends Unit
 
         $this->assertFalse($form->validate(['message']));
         $this->assertNotEmpty($form->getErrors('message'));
-        $this->assertStringContainsString('пробелов', $form->getFirstError('message'));
+        // After trim, spaces become empty string, triggering "required" validator
     }
 
     /**

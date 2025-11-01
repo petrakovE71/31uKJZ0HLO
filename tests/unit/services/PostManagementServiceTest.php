@@ -331,7 +331,7 @@ class PostManagementServiceTest extends Unit
         // Create an old post
         $author = new Author();
         $author->email = 'oldgetedit@example.com';
-        $author->name = 'Old Get Edit User';
+        $author->name = 'Old Edit User'; // Max 15 chars
         $author->ip_address = '192.168.1.8';
         $author->created_at = time();
         $author->updated_at = time();
@@ -389,7 +389,7 @@ class PostManagementServiceTest extends Unit
         // Create an old post (>14 days)
         $author = new Author();
         $author->email = 'oldgetdelete@example.com';
-        $author->name = 'Old Get Delete User';
+        $author->name = 'Old Del User'; // Max 15 chars
         $author->ip_address = '192.168.1.10';
         $author->created_at = time();
         $author->updated_at = time();

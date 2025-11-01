@@ -224,7 +224,7 @@ class PostTest extends Unit
     {
         $author = new Author();
         $author->email = 'softdelete@test.com';
-        $author->name = 'Soft Delete User';
+        $author->name = 'Delete User'; // Max 15 chars
         $author->ip_address = '192.168.1.106';
         $author->created_at = time();
         $author->updated_at = time();

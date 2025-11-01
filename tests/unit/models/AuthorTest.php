@@ -343,7 +343,7 @@ class AuthorTest extends Unit
     {
         $author = new Author();
         $author->email = 'noipposts@test.com';
-        $author->name = 'No IP Posts User';
+        $author->name = 'No IP User'; // Max 15 chars
         $author->ip_address = '192.168.1.209';
         $author->created_at = time();
         $author->updated_at = time();
