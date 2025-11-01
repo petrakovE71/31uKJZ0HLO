@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: storyvalut_nginx
+    ports:
+      - "8082:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - storyvalut_network
+
+  # PHP-FPM
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: storyvalut_php
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - PHP_MEMORY_LIMIT=256M
+      - PHP_UPLOAD_MAX_FILESIZE=20M
+      - PHP_POST_MAX_SIZE=20M
+    depends_on:
+      - mysql
+    networks:
+      - storyvalut_network
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: storyvalut_mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: storyvalut
+      MYSQL_USER: storyvalut_user
+      MYSQL_PASSWORD: storyvalut_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - storyvalut_network
+
+  # phpMyAdmin (for convenience)
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: storyvalut_phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    depends_on:
+      - mysql
+    networks:
+      - storyvalut_network
+
+networks:
+  storyvalut_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
