@@ -180,7 +180,6 @@ return [
 
 Реализованные защиты:
 
-- **XSS** - HtmlPurifier (только <b>, <i>, <s>)
 - **SQL Injection** - Prepared Statements
 - **CSRF** - токены Yii2
 - **Rate Limiting** - 1 пост/3 минуты на автора
